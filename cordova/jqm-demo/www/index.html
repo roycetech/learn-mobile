@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery Mobile Demos</title>
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <link rel="stylesheet" href="_assets/css/jqm-demos.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="_assets/js/index.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <style>
+    .hiddenContent {
+      display: none;
+    }    
+    .app-title {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div data-role="page" class="jqm-demos jqm-home">
+
+    <div data-role="header" class="jqm-header">
+      <h2 class="app-title">My App</h2>
+      <a href="#" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+      <a href="#" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-search ui-nodisc-icon ui-alt-icon ui-btn-right">Search</a>
+    </div>
+    <!-- /header -->
+
+    <div role="main" class="ui-content jqm-content">
+
+      <h1>Demos</h1>
+
+      <p><strong>jQuery Mobile is a touch-optimized HTML5 UI framework designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices.</strong></p>
+
+    </div>
+    <!-- /content -->
+    <div data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+      <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+        <li data-filtertext="demos homepage" data-icon="home"><a class="contentUpdate" href="#home">Home</a></li>
+        <li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content">
+          <h3 class="ui-collapsible-heading">
+		<a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d">
+		    Chapter I
+		</a>
+	</h3>
+          <div class="ui-collapsible-content ui-body-inherit" aria-hidden="true">
+            <ul>
+              <li data-filtertext=""><a href="#1-1" class="contentUpdate">Part 1</a></li>
+              <li data-filtertext=""><a href="#1-2" class="contentUpdate">Part 2</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- /panel -->
+
+
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer">
+      <p>Footer Content</p>
+    </div>
+    <!-- /footer -->
+    <!-- TODO: This should become an external panel so we can add input to markup (unique ID) -->
+    <div data-role="panel" class="jqm-search-panel" data-position="right" data-display="overlay" data-theme="a">
+      <div class="jqm-search">
+        <ul class="jqm-list" data-filter-placeholder="Search demos..." data-filter-reveal="true">
+          <li data-filtertext="home" data-icon="home"><a class="contentUpdate" href="#home">Home</a></li>
+          <li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content">
+            <h3 class="ui-collapsible-heading">
+		<a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d">
+		    Chapter I
+		</a>
+	</h3>
+            <div class="ui-collapsible-content ui-body-inherit" aria-hidden="true">
+              <ul>
+                <li data-filtertext="Part 1"><a href="#1-1" class="contentUpdate">Part 1</a></li>
+                <li data-filtertext="Part 2"><a href="#1-2" class="contentUpdate">Part 2</a></li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <!-- /panel -->
+
+
+  </div>
+  <!-- /page -->
+
+  <div class="hiddenContent 1-1">
+    <h1>State</h1>
+    <p>It makes a class change its behavior depending on its state.
+    </p>
+  </div>
+
+  <div class="hiddenContent 1-2">
+    <h1>Observer</h1>
+    <p>It lets one or more objects be notified of state changes in other objects within the system.</p>
+  </div>
+
+  <div class="hiddenContent home">
+    <h1>Design Patterns</h1>
+
+    <p><strong>jQuery Mobile is a touch-optimized HTML5 UI framework designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices.</strong></p>
+  </div>
+
+  <script>
+    $(function() {
+
+      function updateContent(hash) {
+        $('.ui-content').html($('.hiddenContent.' + hash).html());
+      }
+
+      if (window.location.hash) {
+        updateContent(window.location.hash);
+      }
+
+      $('.contentUpdate').on('click', function() {
+        var hash = $(this).attr('href').substring(1);
+        updateContent(hash);
+      });
+
+
+    });
+
+    
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+      alert('Device Ready!');
+    }
+    
+  </script>
+
+</body>
+
+</html>
